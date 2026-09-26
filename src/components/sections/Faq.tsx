@@ -8,7 +8,7 @@ import { Blob } from "@/components/ui/Blob";
 export function Faq() {
   const [before, after] = faq.lead.split("{phone}");
   return (
-    <section id="questions" className="relative overflow-hidden border-t border-line bg-surface section-y">
+    <section id="questions" className="relative overflow-hidden bg-surface section-y">
       <Blob tone="brand" organic className="-left-32 bottom-0 size-[30rem]" opacity={0.2} />
       <Blob tone="clay" className="-right-20 top-0 size-[22rem]" opacity={0.14} delay={-9} />
 
@@ -25,7 +25,7 @@ export function Faq() {
           </p>
         </Reveal>
 
-        <Reveal as="ul" className="divide-y divide-line border-y border-line" stagger={0.06}>
+        <Reveal as="ul" className="divide-y divide-line-soft" stagger={0.06}>
           {faq.items.map((item) => (
             <li key={item.q}>
               <details className="group">

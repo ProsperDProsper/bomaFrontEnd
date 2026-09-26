@@ -8,6 +8,7 @@ import { cn, pct, tzs } from "@/lib/utils";
 import { Figure } from "@/components/motion/Figure";
 import { Reveal } from "@/components/motion/Reveal";
 import { Blob } from "@/components/ui/Blob";
+import { Orbit } from "@/components/ui/Orbit";
 
 const incomeTones = ["bg-brand-400", "bg-brand-300", "bg-moss-500"];
 
@@ -20,6 +21,8 @@ export function Reports() {
       <Blob tone="brand" organic className="left-1/2 top-0 size-[38rem] -translate-x-1/2" opacity={0.24} blur={85} />
       <Blob tone="sky" className="-left-32 bottom-10 size-[24rem]" opacity={0.22} delay={-7} />
       <Blob tone="clay" className="-right-24 top-1/3 size-[22rem]" opacity={0.15} delay={-13} />
+      <Orbit className="-left-36 top-[8%] size-[26rem]" seconds={68} />
+      <Orbit className="-right-28 bottom-[6%] size-[22rem]" seconds={56} reverse bead />
 
       <div className="container-site relative">
         <Reveal className="max-w-2xl">

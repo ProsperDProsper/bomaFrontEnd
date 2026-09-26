@@ -7,7 +7,13 @@ export type Tone = "due" | "ready" | "moved" | "neutral";
 
 export const workspace = {
   brandLine: "3 properties · 14 July 2026",
-  search: "Search tenants, rooms, expenses",
+  /** Cycles in the mock search field so the screen looks like someone is using it. */
+  searchQueries: [
+    "Asha M., Apartment A2",
+    "rent overdue this week",
+    "Twiga Room, July",
+    "cement, annex expenses",
+  ],
   nav: ["Dashboard", "Properties", "Bomas", "Finance", "Reports"],
   tabs: [
     {

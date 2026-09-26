@@ -32,7 +32,7 @@ export function Header() {
         className={cn(
           "fixed inset-x-0 top-0 z-50 h-(--header-h) transition-colors duration-(--duration-ui) ease-(--ease-out-quart)",
           scrolled || open
-            ? "border-b border-line/80 bg-paper/85 backdrop-blur-xl"
+            ? "bg-paper/80 shadow-[0_1px_0_0_rgb(223_229_240/0.7)] backdrop-blur-xl"
             : "border-b border-transparent bg-transparent",
         )}
       >
@@ -88,7 +88,7 @@ export function Header() {
         id="mobile-nav"
         inert={!open}
         className={cn(
-          "fixed inset-x-0 top-(--header-h) z-40 border-b border-line bg-paper/95 backdrop-blur-xl transition-[opacity,transform] duration-(--duration-ui) ease-(--ease-out-quart) md:hidden",
+          "fixed inset-x-0 top-(--header-h) z-40 bg-paper/95 shadow-[0_12px_30px_-24px_rgb(16_23_40/0.5)] backdrop-blur-xl transition-[opacity,transform] duration-(--duration-ui) ease-(--ease-out-quart) md:hidden",
           open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0",
         )}
       >

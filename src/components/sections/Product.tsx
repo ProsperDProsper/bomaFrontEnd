@@ -2,6 +2,8 @@ import { product } from "@/content/copy";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/motion/Reveal";
 import { Blob } from "@/components/ui/Blob";
+import { Orbit } from "@/components/ui/Orbit";
+import { GridLines } from "@/components/ui/GridLines";
 import { RentalsScreen } from "@/components/screens/RentalsScreen";
 import { StaysScreen } from "@/components/screens/StaysScreen";
 import { ProjectsScreen } from "@/components/screens/ProjectsScreen";
@@ -16,10 +18,13 @@ const screens = {
 export function Product() {
   return (
     <section id="product" className="relative overflow-hidden bg-paper-warm section-y">
+      <GridLines size={88} radius={380} />
       <Blob tone="brand" organic className="-left-44 top-[12%] size-[34rem]" opacity={0.24} blur={80} />
       <Blob tone="violet" organic className="-right-40 top-[42%] size-[32rem]" opacity={0.22} delay={-6} />
       <Blob tone="moss" organic className="-left-32 bottom-[8%] size-[28rem]" opacity={0.16} delay={-12} />
       <Blob tone="sky" className="right-1/4 bottom-[30%] size-[22rem]" opacity={0.2} delay={-17} />
+      <Orbit className="-right-32 top-[18%] size-[26rem]" seconds={76} bead />
+      <Orbit className="-left-28 bottom-[14%] size-[20rem]" seconds={58} reverse />
 
       <div className="container-site relative">
         <Reveal className="mx-auto max-w-2xl text-center">
@@ -56,7 +61,7 @@ export function Product() {
                   <p className="mt-5 text-ink-muted text-pretty">{s.body}</p>
                   <ul className="mt-8 grid gap-x-8 gap-y-5 sm:grid-cols-2">
                     {s.features.map((f) => (
-                      <li key={f.title} className="border-t border-line pt-3">
+                      <li key={f.title} className="border-t border-line-soft pt-3">
                         <p className="text-[0.95rem] font-semibold text-ink">{f.title}</p>
                         <p className="mt-1 text-[0.88rem] text-ink-muted text-pretty">{f.body}</p>
                       </li>

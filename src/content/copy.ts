@@ -29,7 +29,16 @@ export const overview = {
 } as const;
 
 export const audience = {
-  heading: "Built for how property is really run here.",
+  eyebrow: "Who it is for",
+  headingLead: "Built for",
+  /** Cycles in the heading, so the section says who it is for without a list. */
+  headingWords: [
+    "landlords with four units.",
+    "managers running six blocks.",
+    "lodges that also let long-term.",
+    "a family compound in Kinondoni.",
+  ],
+  note: "However your records are kept today.",
   items: [
     {
       title: "Owners and managers across Tanzania",
