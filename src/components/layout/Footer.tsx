@@ -8,7 +8,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-indigo-800/40 bg-indigo-900 text-indigo-100">
+    <footer className="border-t border-brand-800/40 bg-brand-900 text-brand-100">
       <div className="container-site py-14">
         <div className="flex flex-col gap-10 lg:flex-row lg:items-start lg:justify-between">
           <div className="max-w-sm">
@@ -24,20 +24,20 @@ export function Footer() {
                 {brand.name}
               </span>
             </div>
-            <p className="mt-4 text-[0.95rem] text-indigo-200/90 text-pretty">{footer.statement}</p>
+            <p className="mt-4 text-[0.95rem] text-brand-200/90 text-pretty">{footer.statement}</p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
                 href={contact.whatsappHref}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-pill border border-indigo-700 px-4 py-2 text-sm text-white transition-colors hover:border-indigo-400 hover:bg-indigo-800"
+                className="inline-flex items-center gap-2 rounded-pill border border-brand-700 px-4 py-2 text-sm text-white transition-colors hover:border-brand-400 hover:bg-brand-800"
               >
                 <WhatsappLogo size={16} weight="fill" aria-hidden />
                 {contact.whatsappLabel}
               </a>
               <a
                 href={contact.phoneHref}
-                className="inline-flex items-center gap-2 rounded-pill border border-indigo-700 px-4 py-2 text-sm text-white transition-colors hover:border-indigo-400 hover:bg-indigo-800"
+                className="inline-flex items-center gap-2 rounded-pill border border-brand-700 px-4 py-2 text-sm text-white transition-colors hover:border-brand-400 hover:bg-brand-800"
               >
                 <Phone size={16} weight="fill" aria-hidden />
                 {contact.phone}
@@ -47,14 +47,14 @@ export function Footer() {
 
           <nav aria-label={footer.columnsLabel} className="grid grid-cols-2 gap-x-12 gap-y-3 sm:grid-cols-3">
             {footer.links.map((l) => (
-              <a key={l.href} href={l.href} className="link-underline w-fit text-[0.95rem] text-indigo-200 hover:text-white">
+              <a key={l.href} href={l.href} className="link-underline w-fit text-[0.95rem] text-brand-200 hover:text-white">
                 {l.label}
               </a>
             ))}
           </nav>
         </div>
 
-        <div className="mt-12 flex flex-col gap-2 border-t border-indigo-800 pt-6 text-sm text-indigo-300 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-12 flex flex-col gap-2 border-t border-brand-800 pt-6 text-sm text-brand-300 sm:flex-row sm:items-center sm:justify-between">
           <p>{footer.legal}</p>
           <p>{fmt(footer.copyright, { year })}</p>
         </div>

@@ -4,7 +4,7 @@ import type { Tone } from "@/content/demo";
 const tones: Record<Tone, string> = {
   due: "bg-clay-50 text-clay-600 ring-clay-400/30",
   ready: "bg-moss-50 text-moss-600 ring-moss-500/25",
-  moved: "bg-indigo-50 text-indigo-700 ring-indigo-300/40",
+  moved: "bg-brand-50 text-brand-700 ring-brand-300/40",
   neutral: "bg-surface-sunk text-ink-muted ring-line",
 };
 
@@ -23,7 +23,7 @@ export function Tag({ tone = "neutral", children, className }: { tone?: Tone; ch
           "size-1.5 rounded-full",
           tone === "due" && "bg-clay-500",
           tone === "ready" && "bg-moss-500",
-          tone === "moved" && "bg-indigo-500",
+          tone === "moved" && "bg-brand-500",
           tone === "neutral" && "bg-ink-faint",
         )}
       />

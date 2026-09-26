@@ -19,7 +19,7 @@ export function Audience() {
             const Icon = icons[i];
             return (
               <li key={item.title} className="border-t border-line pt-4">
-                <Icon size={22} className="text-indigo-600" aria-hidden />
+                <Icon size={22} className="text-brand-600" aria-hidden />
                 <p className="mt-3 text-[0.98rem] font-semibold text-ink">{item.title}</p>
                 <p className="mt-1.5 text-[0.9rem] text-ink-muted text-pretty">{item.body}</p>
               </li>

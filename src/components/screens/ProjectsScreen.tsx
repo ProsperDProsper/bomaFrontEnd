@@ -20,20 +20,20 @@ export function ProjectsScreen() {
       title={projects.screenTitle}
       subtitle={site.microcopy.illustrative}
       action={
-        <span className="inline-flex items-center gap-1.5 rounded-pill bg-indigo-700 px-3 py-1.5 text-[0.72rem] font-semibold text-white">
+        <span className="inline-flex items-center gap-1.5 rounded-pill bg-brand-700 px-3 py-1.5 text-[0.72rem] font-semibold text-white">
           <Plus size={12} weight="bold" aria-hidden />
           {projects.action}
         </span>
       }
     >
-      <div className="grid min-w-0 sm:grid-cols-[11rem_minmax(0,1fr)]">
-        <div className="min-w-0 border-b border-line-soft bg-paper-warm/50 p-3 sm:border-b-0 sm:border-r">
+      <div className="grid min-w-0 @[30rem]:grid-cols-[11rem_minmax(0,1fr)]">
+        <div className="min-w-0 border-b border-line-soft bg-paper-warm/50 p-3 @[30rem]:border-b-0 @[30rem]:border-r">
           <p className="px-2 pb-2 text-[0.7rem] font-semibold uppercase tracking-wider text-ink-faint">
             {projects.listLabel}
           </p>
-          <ul className="flex max-w-full gap-2 overflow-x-auto pb-1 sm:block sm:space-y-1 sm:overflow-visible">
+          <ul className="flex max-w-full gap-2 overflow-x-auto pb-1 @[30rem]:block @[30rem]:space-y-1 @[30rem]:overflow-visible">
             {projects.buildings.map((b) => (
-              <li key={b.id} className="shrink-0 sm:shrink">
+              <li key={b.id} className="shrink-0 @[30rem]:shrink">
                 <button
                   onClick={() => setId(b.id)}
                   aria-pressed={b.id === id}
@@ -51,7 +51,7 @@ export function ProjectsScreen() {
           </ul>
         </div>
 
-        <div key={building.id} className="min-w-0 animate-[fade-slide_380ms_var(--ease-out-quart)] p-4 sm:p-5">
+        <div key={building.id} className="min-w-0 animate-[fade-slide_380ms_var(--ease-out-quart)] p-4 @[30rem]:p-5">
           <div className="flex flex-wrap items-end justify-between gap-3">
             <span>
               <span className="block text-sm font-semibold text-ink">{building.name}</span>
@@ -79,7 +79,7 @@ export function ProjectsScreen() {
             <p className="mt-3 text-[0.72rem] text-ink-faint">{reports.disclaimer}</p>
           </div>
 
-          <dl className="mt-3 grid grid-cols-2 gap-2 lg:grid-cols-3">
+          <dl className="mt-3 grid grid-cols-2 gap-2 @[34rem]:grid-cols-3">
             {[
               { k: labels.costs, v: <Figure value={building.costs} />, tone: "text-ink" },
               { k: labels.collected, v: <Figure value={building.collected} />, tone: "text-moss-600" },

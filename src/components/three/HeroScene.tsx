@@ -6,27 +6,27 @@ import { ContactShadows, OrbitControls, RoundedBox } from "@react-three/drei";
 import * as THREE from "three";
 import { hero } from "@/content/copy";
 
-/* Palette kept in step with the CSS tokens — calm slate, indigo roofs, clay plant. */
+/* Palette kept in step with the CSS tokens: brand blue roofs, clay crane, moss planting. */
 const C = {
-  ground: "#eef1f5",
-  groundEdge: "#e7ebf1",
-  road: "#d5dbe4",
-  wall2: "#e6eaf0",
-  car: "#6272a3",
-  carWarm: "#b4784e",
-  wall: "#f4f6f8",
-  wallWarm: "#e9ecf1",
-  roof: "#2c3655",
-  roofSoft: "#3b4970",
-  window: "#5e6fa3",
-  windowLit: "#cfd8ee",
-  slab: "#d7dde5",
-  column: "#c6ccd6",
-  crane: "#b4784e",
-  foliage: "#4f7a66",
-  foliageSoft: "#5f8b76",
+  ground: "#edf1f8",
+  groundEdge: "#e2e8f3",
+  road: "#d2daea",
+  wall2: "#e4eaf5",
+  car: "#315bd8",
+  carWarm: "#c26a3c",
+  wall: "#f4f7fc",
+  wallWarm: "#e8edf7",
+  roof: "#223c8b",
+  roofSoft: "#2747b0",
+  window: "#4a6ee5",
+  windowLit: "#cfdcfb",
+  slab: "#d6ddec",
+  column: "#c3cbdf",
+  crane: "#c26a3c",
+  foliage: "#2f8f66",
+  foliageSoft: "#3da077",
   trunk: "#8a7357",
-  water: "#a8b4d3",
+  water: "#9db1f6",
 };
 
 type Vec = [number, number, number];
@@ -373,7 +373,7 @@ export default function HeroScene({ reduced = false }: { reduced?: boolean }) {
       role="img"
       frameloop={reduced ? "demand" : "always"}
     >
-      <hemisphereLight args={["#ffffff", "#c2cbd8", 1.25]} />
+      <hemisphereLight args={["#ffffff", "#c3cee4", 1.25]} />
       <directionalLight
         position={[6, 9, 4]}
         intensity={1.75}

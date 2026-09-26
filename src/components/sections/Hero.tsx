@@ -9,7 +9,7 @@ import { ArrowDown, WhatsappLogo, HandTap } from "@phosphor-icons/react";
 import { hero } from "@/content/copy";
 import { site } from "@/content/site";
 import { ButtonLink } from "@/components/ui/Button";
-import { Blob } from "@/components/ui/Blob";
+import { Blob, Ring } from "@/components/ui/Blob";
 
 // WebGL only on the client, and only once the rest of the page is interactive.
 const HeroScene = dynamic(() => import("@/components/three/HeroScene"), { ssr: false });
@@ -52,9 +52,12 @@ export function Hero() {
 
   return (
     <section ref={scope} id="top" className="relative overflow-hidden pt-(--header-h)">
-      <Blob tone="indigo" className="-left-32 top-10 size-[34rem]" opacity={0.28} />
-      <Blob tone="clay" className="-right-24 top-40 size-[26rem]" opacity={0.16} delay={-6} />
-      <Blob tone="moss" className="bottom-0 left-1/3 size-[22rem]" opacity={0.12} delay={-11} />
+      <Blob tone="brand" organic className="-left-40 -top-10 size-[40rem]" opacity={0.3} blur={80} />
+      <Blob tone="sky" organic className="left-1/4 top-1/3 size-[26rem]" opacity={0.28} delay={-5} />
+      <Blob tone="violet" organic className="-right-20 top-24 size-[34rem]" opacity={0.26} delay={-9} blur={85} />
+      <Blob tone="clay" className="bottom-4 right-1/3 size-[20rem]" opacity={0.16} delay={-14} />
+      <Ring className="-left-24 top-1/4 size-[30rem]" opacity={0.35} />
+      <Ring className="-right-40 bottom-0 size-[36rem]" opacity={0.25} />
 
       <div className="container-site relative grid items-center gap-10 pb-16 pt-12 lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:pb-24 lg:pt-16">
         <div className="max-w-2xl">
@@ -75,14 +78,14 @@ export function Hero() {
                       {line.replace("paid,", "")}
                       <span className="relative inline-block">
                         paid,
-                        <span data-hero-brush className="absolute inset-x-[-3%] bottom-[0.02em] -z-10 block h-[0.34em]">
+                        <span data-hero-brush className="absolute inset-x-[-4%] bottom-[0.06em] -z-10 block h-[0.3em]">
                           <Image
                             src="/brand/hero-brush-stroke.webp"
                             alt=""
                             fill
                             priority
                             sizes="20rem"
-                            className="object-fill opacity-55 [filter:hue-rotate(-12deg)_saturate(0.45)]"
+                            className="object-fill opacity-45 [filter:saturate(0.9)]"
                           />
                         </span>
                       </span>
@@ -114,7 +117,7 @@ export function Hero() {
         <div data-hero-scene className="relative">
           <span
             aria-hidden
-            className="pointer-events-none absolute inset-x-6 top-10 -z-10 h-2/3 rounded-full bg-indigo-200/40 blur-3xl"
+            className="pointer-events-none absolute inset-x-6 top-10 -z-10 h-2/3 rounded-full bg-brand-200/40 blur-3xl"
           />
           <div className="relative aspect-4/3 w-full sm:aspect-square lg:-mr-10 lg:aspect-4/3 xl:-mr-20">
             <HeroScene reduced={reduced} />

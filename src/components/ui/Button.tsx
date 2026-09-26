@@ -4,10 +4,10 @@ const base =
   "group relative inline-flex items-center justify-center gap-2 overflow-hidden rounded-pill px-6 py-3 text-[0.95rem] font-semibold transition-[transform,background-color,border-color,color] duration-(--duration-ui) ease-(--ease-out-quart) active:translate-y-px";
 
 const variants = {
-  primary: "bg-indigo-700 text-white hover:bg-indigo-800",
-  secondary: "border border-line bg-surface text-ink hover:border-indigo-300 hover:text-indigo-700",
-  ghost: "text-ink-soft hover:text-indigo-700",
-  onDark: "bg-white text-indigo-900 hover:bg-indigo-50",
+  primary: "bg-brand-700 text-white hover:bg-brand-800",
+  secondary: "border border-line bg-surface text-ink hover:border-brand-300 hover:text-brand-700",
+  ghost: "text-ink-soft hover:text-brand-700",
+  onDark: "bg-white text-brand-900 hover:bg-brand-50",
 } as const;
 
 type Variant = keyof typeof variants;

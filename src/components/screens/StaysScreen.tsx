@@ -24,20 +24,20 @@ export function StaysScreen() {
       title={stays.property}
       subtitle={site.microcopy.illustrative}
       action={
-        <span className="inline-flex items-center gap-1.5 rounded-pill bg-indigo-700 px-3 py-1.5 text-[0.72rem] font-semibold text-white">
+        <span className="inline-flex items-center gap-1.5 rounded-pill bg-brand-700 px-3 py-1.5 text-[0.72rem] font-semibold text-white">
           <Plus size={12} weight="bold" aria-hidden />
           {stays.action}
         </span>
       }
     >
-      <div className="grid min-w-0 sm:grid-cols-[10.5rem_minmax(0,1fr)]">
-        <div className="min-w-0 border-b border-line-soft bg-paper-warm/50 p-3 sm:border-b-0 sm:border-r">
+      <div className="grid min-w-0 @[30rem]:grid-cols-[10.5rem_minmax(0,1fr)]">
+        <div className="min-w-0 border-b border-line-soft bg-paper-warm/50 p-3 @[30rem]:border-b-0 @[30rem]:border-r">
           <p className="px-2 pb-2 text-[0.7rem] font-semibold uppercase tracking-wider text-ink-faint">
             {stays.listLabel}
           </p>
-          <ul className="flex max-w-full gap-2 overflow-x-auto pb-1 sm:block sm:space-y-1 sm:overflow-visible">
+          <ul className="flex max-w-full gap-2 overflow-x-auto pb-1 @[30rem]:block @[30rem]:space-y-1 @[30rem]:overflow-visible">
             {stays.rooms.map((r) => (
-              <li key={r.id} className="shrink-0 sm:shrink">
+              <li key={r.id} className="shrink-0 @[30rem]:shrink">
                 <button
                   onClick={() => setId(r.id)}
                   aria-pressed={r.id === id}
@@ -51,7 +51,7 @@ export function StaysScreen() {
                   <span
                     className={cn(
                       "size-1.5 shrink-0 rounded-full",
-                      r.tone === "due" ? "bg-clay-500" : r.tone === "ready" ? "bg-moss-500" : "bg-indigo-400",
+                      r.tone === "due" ? "bg-clay-500" : r.tone === "ready" ? "bg-moss-500" : "bg-brand-400",
                     )}
                   />
                   {r.name}
@@ -61,7 +61,7 @@ export function StaysScreen() {
           </ul>
         </div>
 
-        <div key={room.id} className="min-w-0 animate-[fade-slide_380ms_var(--ease-out-quart)] p-4 sm:p-5">
+        <div key={room.id} className="min-w-0 animate-[fade-slide_380ms_var(--ease-out-quart)] p-4 @[30rem]:p-5">
           <div className="flex flex-wrap items-center justify-between gap-3">
             <span>
               <span className="block text-sm font-semibold text-ink">{room.name}</span>
@@ -85,7 +85,7 @@ export function StaysScreen() {
                   className={cn(
                     "flex-1 rounded-lg border py-2 text-center text-[0.7rem] transition-colors duration-(--duration-ui)",
                     booked
-                      ? "border-indigo-600 bg-indigo-600 font-semibold text-white"
+                      ? "border-brand-600 bg-brand-600 font-semibold text-white"
                       : "border-line bg-surface text-ink-faint",
                   )}
                 >
@@ -100,7 +100,7 @@ export function StaysScreen() {
             </p>
           ) : null}
 
-          <dl className="mt-5 grid grid-cols-2 gap-2 lg:grid-cols-3">
+          <dl className="mt-5 grid grid-cols-2 gap-2 @[34rem]:grid-cols-3">
             {[
               { k: labels.charges, v: <Figure value={room.charges} short={false} />, tone: "text-ink" },
               { k: labels.paid, v: <Figure value={room.paid} short={false} />, tone: "text-moss-600" },

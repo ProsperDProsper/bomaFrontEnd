@@ -47,7 +47,7 @@ export function Header() {
               <a
                 key={item.href}
                 href={item.href}
-                className="rounded-pill px-3.5 py-2 text-[0.92rem] font-medium text-ink-soft transition-colors duration-(--duration-micro) hover:bg-surface hover:text-indigo-700"
+                className="rounded-pill px-3.5 py-2 text-[0.92rem] font-medium text-ink-soft transition-colors duration-(--duration-micro) hover:bg-surface hover:text-brand-700"
               >
                 {item.label}
               </a>
@@ -57,7 +57,7 @@ export function Header() {
           <div className="flex items-center gap-2">
             <a
               href="#start"
-              className="hidden rounded-pill px-3.5 py-2 text-[0.92rem] font-medium text-ink-soft transition-colors hover:text-indigo-700 sm:inline-flex"
+              className="hidden rounded-pill px-3.5 py-2 text-[0.92rem] font-medium text-ink-soft transition-colors hover:text-brand-700 sm:inline-flex"
             >
               {nav.signIn.label}
             </a>
