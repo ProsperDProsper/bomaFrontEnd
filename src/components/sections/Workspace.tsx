@@ -9,10 +9,6 @@ import { cn, pct, tzs } from "@/lib/utils";
 import { Figure } from "@/components/motion/Figure";
 import { Typewriter } from "@/components/motion/Typewriter";
 import { Reveal } from "@/components/motion/Reveal";
-import { Blob } from "@/components/ui/Blob";
-import { Orbit } from "@/components/ui/Orbit";
-import { GridLines } from "@/components/ui/GridLines";
-import { FrameLines } from "@/components/ui/FrameLines";
 import { Tag } from "@/components/ui/Tag";
 import { Screen } from "@/components/ui/Screen";
 
@@ -23,14 +19,7 @@ export function Workspace() {
   const collectedPct = pct(chart.collected, chart.expected);
 
   return (
-    <section id="overview" className="relative overflow-hidden section-y">
-      <GridLines size={80} radius={360} />
-      <FrameLines />
-      <Blob tone="brand" organic className="-right-44 top-10 size-[36rem]" opacity={0.26} blur={80} />
-      <Blob tone="sky" organic className="-left-36 top-1/2 size-[30rem]" opacity={0.24} delay={-8} />
-      <Blob tone="pale" className="left-1/3 -top-10 size-[24rem]" opacity={0.55} delay={-3} />
-      <Orbit className="-left-40 top-1/4 size-[30rem]" seconds={82} />
-      <Orbit className="-right-24 bottom-0 size-[18rem]" seconds={50} reverse bead />
+    <section id="overview" className="relative section-y">
 
       <div className="container-site relative">
         <Reveal className="max-w-2xl">

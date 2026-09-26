@@ -19,6 +19,7 @@ export function Blob({
   tone = "brand",
   className,
   opacity = 0.4,
+  darkOpacity,
   blur = 70,
   delay = 0,
   organic = false,
@@ -26,6 +27,8 @@ export function Blob({
   tone?: keyof typeof tones;
   className?: string;
   opacity?: number;
+  /** Dark surfaces need far less colour before text starts to suffer. */
+  darkOpacity?: number;
   blur?: number;
   delay?: number;
   organic?: boolean;
@@ -42,6 +45,7 @@ export function Blob({
       style={
         {
           "--blob-opacity": opacity,
+          "--blob-opacity-dark": darkOpacity ?? opacity * 0.5,
           "--blob-blur": `${blur}px`,
           animationDelay: `${delay}s`,
           ...(organic ? { borderRadius: "62% 38% 46% 54% / 55% 42% 58% 45%" } : null),

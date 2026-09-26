@@ -2,15 +2,12 @@ import { Plus } from "@phosphor-icons/react/dist/ssr";
 import { faq } from "@/content/copy";
 import { site } from "@/content/site";
 import { Reveal } from "@/components/motion/Reveal";
-import { Blob } from "@/components/ui/Blob";
 
 /** Native <details>, so it works before hydration and keyboard users get it free. */
 export function Faq() {
   const [before, after] = faq.lead.split("{phone}");
   return (
-    <section id="questions" className="relative overflow-hidden section-y">
-      <Blob tone="brand" organic className="-left-32 bottom-0 size-[30rem]" opacity={0.2} />
-      <Blob tone="clay" className="-right-20 top-0 size-[22rem]" opacity={0.14} delay={-9} />
+    <section id="questions" className="relative section-y">
 
       <div className="container-site relative grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16">
         <Reveal className="max-w-sm">

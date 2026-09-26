@@ -30,7 +30,7 @@ export function LinkCard({
       className={cn(
         "group/card relative flex flex-col overflow-hidden rounded-panel border p-2 transition-[transform,border-color,box-shadow] duration-(--duration-ui) ease-(--ease-out-quart)",
         tone === "dark"
-          ? "border-brand-700/70 bg-brand-800/40 hover:border-brand-400"
+          ? "border-white/15 bg-white/5 hover:border-white/35"
           : "border-line bg-surface hover:-translate-y-1 hover:border-brand-300 hover:shadow-raised",
         className,
       )}
@@ -39,7 +39,7 @@ export function LinkCard({
         <div
           className={cn(
             "relative isolate mb-1 overflow-hidden rounded-[1.15rem]",
-            tone === "dark" ? "bg-brand-950/40" : "bg-paper",
+            tone === "dark" ? "bg-black/20" : "bg-paper",
           )}
         >
           <div className="transition-transform duration-(--duration-slow) ease-(--ease-out-quart) group-hover/card:scale-[1.03]">
@@ -59,7 +59,7 @@ export function LinkCard({
             {title}
           </h3>
           {body ? (
-            <p className={cn("mt-1.5 text-[0.88rem] text-pretty", tone === "dark" ? "text-brand-200" : "text-ink-muted")}>
+            <p className={cn("mt-1.5 text-[0.88rem] text-pretty", tone === "dark" ? "text-band-muted" : "text-ink-muted")}>
               {body}
             </p>
           ) : null}
@@ -70,7 +70,7 @@ export function LinkCard({
           aria-hidden
           className={cn(
             "mt-0.5 shrink-0 transition-all duration-(--duration-ui) ease-(--ease-out-quart) group-hover/card:-translate-y-0.5 group-hover/card:translate-x-0.5",
-            tone === "dark" ? "text-brand-300 group-hover/card:text-white" : "text-ink-faint group-hover/card:text-brand-600",
+            tone === "dark" ? "text-band-faint group-hover/card:text-white" : "text-ink-faint group-hover/card:text-brand-600",
           )}
         />
       </div>

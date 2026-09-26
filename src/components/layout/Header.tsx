@@ -37,7 +37,7 @@ export function Header() {
             : "border-b border-transparent bg-transparent",
         )}
       >
-        <div className="container-site flex h-full items-center justify-between gap-6">
+        <div className="container-wide flex h-full items-center justify-between gap-6">
           <a href="#top" aria-label={brand.homeLinkLabel} className="flex items-center gap-2.5">
             <Image src={brand.logoSrc} alt="" width={109} height={115} className="h-7 w-auto" priority />
             <span className="font-display text-[1.35rem] font-semibold tracking-tight text-ink">{brand.name}</span>
@@ -94,7 +94,7 @@ export function Header() {
           open ? "translate-y-0 opacity-100" : "pointer-events-none -translate-y-2 opacity-0",
         )}
       >
-        <nav aria-label={site.nav.label} className="container-site flex flex-col py-3">
+        <nav aria-label={site.nav.label} className="container-wide flex flex-col py-3">
           {nav.items.map((item) => (
             <a
               key={item.href}

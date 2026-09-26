@@ -49,6 +49,11 @@
   --color-moss-500: #2f8f66;
   --color-moss-600: #257053;
 
+  /* Text and rules that always sit on a deep blue band, in either theme. */
+  --color-band-ink: #ffffff;
+  --color-band-muted: #c2d0f7;
+  --color-band-faint: #8ea2d8;
+
   /* Button fills stay dark-on-light and light-on-dark whatever the theme does. */
   --color-btn: #2747b0;
   --color-btn-hover: #223c8b;
@@ -172,10 +177,20 @@
 @utility container-site {
   width: 100%;
   margin-inline: auto;
-  max-width: 78rem;
+  max-width: 84rem;
   padding-inline: 1.25rem;
-  @media (width >= 48rem) { padding-inline: 2.5rem; }
-  @media (width >= 80rem) { padding-inline: 3.5rem; }
+  @media (width >= 48rem) { padding-inline: 2.25rem; }
+  @media (width >= 80rem) { padding-inline: 3rem; }
+}
+
+/* The header runs wider than the content, with tighter gutters. */
+@utility container-wide {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 96rem;
+  padding-inline: 1rem;
+  @media (width >= 48rem) { padding-inline: 1.75rem; }
+  @media (width >= 80rem) { padding-inline: 2.25rem; }
 }
 
 @utility section-y {
@@ -190,6 +205,10 @@
   opacity: var(--blob-opacity, 0.5);
   pointer-events: none;
   z-index: 0;
+}
+
+[data-theme="dark"] .blob {
+  opacity: var(--blob-opacity-dark, var(--blob-opacity, 0.5));
 }
 
 /* Underline that draws itself in on hover, used on quiet text links. */

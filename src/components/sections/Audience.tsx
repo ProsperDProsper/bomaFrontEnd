@@ -3,8 +3,6 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Typewriter } from "@/components/motion/Typewriter";
 import { Blob } from "@/components/ui/Blob";
 import { Orbit } from "@/components/ui/Orbit";
-import { GridLines } from "@/components/ui/GridLines";
-import { FrameLines } from "@/components/ui/FrameLines";
 import { LinkCard } from "@/components/ui/LinkCard";
 import { audienceArt } from "@/components/ui/Illustrations";
 
@@ -17,13 +15,7 @@ const audienceLinks = ["#overview", "#product", "#start"];
  */
 export function Audience() {
   return (
-    <section aria-labelledby="audience-heading" className="relative overflow-hidden section-y">
-      <GridLines size={72} radius={340} />
-      <FrameLines />
-      <Blob tone="brand" organic className="-left-32 top-0 size-[28rem]" opacity={0.18} />
-      <Blob tone="violet" organic className="-right-28 bottom-0 size-[26rem]" opacity={0.18} delay={-8} />
-      <Orbit className="-right-24 top-10 size-[22rem]" seconds={70} bead />
-      <Orbit className="-left-16 bottom-4 size-[16rem]" seconds={54} reverse dashed={false} />
+    <section aria-labelledby="audience-heading" className="relative section-y">
 
       <div className="container-site relative">
         <Reveal className="grid gap-4 lg:grid-cols-3 lg:grid-rows-2" stagger={0.09}>
@@ -33,17 +25,17 @@ export function Audience() {
             <Blob tone="violet" organic className="-bottom-24 -left-10 size-[16rem]" opacity={0.3} blur={70} delay={-6} />
             <Orbit className="-bottom-20 -right-16 size-[18rem] border-white/15" seconds={64} />
             <div className="relative flex h-full flex-col justify-between gap-10">
-              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-brand-300">
+              <p className="text-[0.78rem] font-semibold uppercase tracking-[0.16em] text-band-faint">
                 {audience.eyebrow}
               </p>
               <div>
                 <h2 id="audience-heading" className="font-display text-h2 leading-[1.05] text-white text-balance">
                   {audience.headingLead}{" "}
-                  <span className="block text-brand-300">
+                  <span className="block text-band-faint">
                     <Typewriter words={audience.headingWords} />
                   </span>
                 </h2>
-                <p className="mt-5 max-w-xs text-[0.95rem] text-brand-200/90 text-pretty">{audience.note}</p>
+                <p className="mt-5 max-w-xs text-[0.95rem] text-band-muted/90 text-pretty">{audience.note}</p>
               </div>
             </div>
           </div>

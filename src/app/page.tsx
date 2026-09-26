@@ -5,17 +5,28 @@ import { Product } from "@/components/sections/Product";
 import { Reports } from "@/components/sections/Reports";
 import { Faq, faqJsonLd } from "@/components/sections/Faq";
 import { Cta } from "@/components/sections/Cta";
+import { PageBackground, BandFade } from "@/components/ui/PageBackground";
 
 export default function Home() {
   return (
     <>
-      <Hero />
-      <Workspace />
-      <Audience />
-      <Product />
-      <Reports />
-      <Faq />
+      {/* Everything from the hero to the questions shares one backdrop. */}
+      <div className="relative">
+        <PageBackground />
+        <div className="relative">
+          <Hero />
+          <Workspace />
+          <Audience />
+          <Product />
+          <Reports />
+          <Faq />
+        </div>
+      </div>
+
+      {/* …then it dissolves into the closing band, which the footer continues. */}
+      <BandFade />
       <Cta />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}

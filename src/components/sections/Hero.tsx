@@ -9,7 +9,6 @@ import { ArrowDown, WhatsappLogo, HandTap } from "@phosphor-icons/react";
 import { hero } from "@/content/copy";
 import { site } from "@/content/site";
 import { ButtonLink } from "@/components/ui/Button";
-import { Blob, Ring } from "@/components/ui/Blob";
 
 // WebGL only on the client, and only once the rest of the page is interactive.
 const HeroScene = dynamic(() => import("@/components/three/HeroScene"), { ssr: false });
@@ -65,13 +64,7 @@ export function Hero() {
   );
 
   return (
-    <section ref={scope} id="top" className="relative overflow-hidden pt-(--header-h)">
-      <Blob tone="brand" organic className="-left-40 -top-10 size-[40rem]" opacity={0.3} blur={80} />
-      <Blob tone="sky" organic className="left-1/4 top-1/3 size-[26rem]" opacity={0.28} delay={-5} />
-      <Blob tone="violet" organic className="-right-20 top-24 size-[34rem]" opacity={0.26} delay={-9} blur={85} />
-      <Blob tone="clay" className="bottom-4 right-1/3 size-[20rem]" opacity={0.16} delay={-14} />
-      <Ring className="-left-24 top-1/4 size-[30rem]" opacity={0.35} />
-      <Ring className="-right-40 bottom-0 size-[36rem]" opacity={0.25} />
+    <section ref={scope} id="top" className="relative pt-(--header-h)">
 
       <div className="container-site relative grid items-center gap-10 pb-16 pt-12 lg:grid-cols-[1.05fr_1fr] lg:gap-8 lg:pb-24 lg:pt-16">
         <div className="max-w-2xl">
@@ -131,7 +124,7 @@ export function Hero() {
         <div data-hero-scene className="relative">
           <span
             aria-hidden
-            className="pointer-events-none absolute inset-x-6 top-10 -z-10 h-2/3 rounded-full bg-brand-200/40 blur-3xl"
+            className="pointer-events-none absolute inset-x-6 top-10 -z-10 h-2/3 rounded-full bg-brand-200/40 blur-3xl dark:bg-brand-500/12"
           />
           <div className="relative aspect-4/3 w-full sm:aspect-square lg:-mr-10 lg:aspect-4/3 xl:-mr-20">
             <HeroScene reduced={reduced} dark={dark} />
