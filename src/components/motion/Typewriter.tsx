@@ -1,12 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 /**
  * Types a list of phrases, pauses, deletes, moves on. The first phrase is rendered
- * on the server, so the line never starts empty, and reduced motion keeps it there
- * without ever animating.
+ * on the server so the line never starts empty, and the caret only appears once the
+ * animation is actually running — under reduced motion nothing moves at all.
+ * Text is written to the node directly, so the surrounding section never re-renders.
  */
 export function Typewriter({
   words,
@@ -21,22 +22,25 @@ export function Typewriter({
   deleteMs?: number;
   holdMs?: number;
 }) {
-  const [text, setText] = useState(words[0]);
-  const [typing, setTyping] = useState(false);
-  const timer = useRef<ReturnType<typeof setTimeout>>(undefined);
+  const textRef = useRef<HTMLSpanElement>(null);
+  const caretRef = useRef<HTMLSpanElement>(null);
 
   useEffect(() => {
+    const el = textRef.current;
+    if (!el) return;
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    caretRef.current?.classList.remove("opacity-0");
 
     let word = 0;
     let chars = words[0].length;
     let deleting = false;
-    setTyping(true);
+    let timer: ReturnType<typeof setTimeout>;
 
     const tick = () => {
       const current = words[word];
       chars += deleting ? -1 : 1;
-      setText(current.slice(0, chars));
+      el.textContent = current.slice(0, chars);
 
       let wait = deleting ? deleteMs : typeMs;
       if (!deleting && chars === current.length) {
@@ -47,22 +51,24 @@ export function Typewriter({
         word = (word + 1) % words.length;
         wait = 260;
       }
-      timer.current = setTimeout(tick, wait);
+      timer = setTimeout(tick, wait);
     };
 
-    timer.current = setTimeout(tick, holdMs);
-    return () => clearTimeout(timer.current);
+    timer = setTimeout(tick, holdMs);
+    return () => {
+      clearTimeout(timer);
+      caretRef.current?.classList.add("opacity-0");
+    };
   }, [words, typeMs, deleteMs, holdMs]);
 
   return (
     <span className={cn("inline-flex items-baseline", className)}>
-      <span>{text}</span>
-      {typing ? (
-        <span
-          aria-hidden
-          className="ml-0.5 inline-block h-[0.9em] w-[2px] translate-y-[0.08em] animate-[caret_1.05s_step-end_infinite] bg-current"
-        />
-      ) : null}
+      <span ref={textRef}>{words[0]}</span>
+      <span
+        ref={caretRef}
+        aria-hidden
+        className="ml-0.5 inline-block h-[0.9em] w-[2px] translate-y-[0.08em] animate-[caret_1.05s_step-end_infinite] bg-current opacity-0"
+      />
     </span>
   );
 }
