@@ -1,0 +1,184 @@
+@import "tailwindcss";
+
+/* ---------------------------------------------------------------------------
+ * BomaPM design tokens — "cool slate + muted indigo".
+ * Calm paper, near-black ink, one indigo accent, clay for anything overdue and
+ * a slate green for anything settled. Nothing here is a bright SaaS blue.
+ * ------------------------------------------------------------------------- */
+@theme {
+  --color-paper: #f7f8f9;
+  --color-paper-warm: #f2f4f6;
+  --color-surface: #ffffff;
+  --color-surface-sunk: #eef1f4;
+
+  --color-ink: #141a22;
+  --color-ink-soft: #33404f;
+  --color-ink-muted: #5f6b7a;
+  --color-ink-faint: #8b95a2;
+  --color-line: #e2e7ed;
+  --color-line-soft: #eef1f5;
+
+  --color-indigo-50: #f3f5fa;
+  --color-indigo-100: #e6eaf4;
+  --color-indigo-200: #ccd4e8;
+  --color-indigo-300: #a8b4d3;
+  --color-indigo-400: #8291bd;
+  --color-indigo-500: #6272a3;
+  --color-indigo-600: #4a5b8c;
+  --color-indigo-700: #3b4970;
+  --color-indigo-800: #2c3655;
+  --color-indigo-900: #1d2439;
+
+  --color-clay-50: #faf3ed;
+  --color-clay-400: #cf9a76;
+  --color-clay-500: #b4784e;
+  --color-clay-600: #94603c;
+
+  --color-moss-50: #eef4f1;
+  --color-moss-500: #4f7a66;
+  --color-moss-600: #3f6353;
+
+  --font-display: var(--font-newsreader), Georgia, serif;
+  --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", monospace;
+
+  /* Display sizes are fluid; body copy stays fixed and readable. */
+  --text-display: clamp(2.75rem, 1.6rem + 4.6vw, 5.25rem);
+  --text-display--line-height: 0.96;
+  --text-display--letter-spacing: -0.028em;
+  --text-h1: clamp(2.25rem, 1.5rem + 3vw, 3.75rem);
+  --text-h1--line-height: 1.02;
+  --text-h1--letter-spacing: -0.024em;
+  --text-h2: clamp(1.75rem, 1.25rem + 1.9vw, 2.75rem);
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.02em;
+  --text-h3: clamp(1.25rem, 1.05rem + 0.7vw, 1.6rem);
+  --text-h3--line-height: 1.18;
+  --text-h3--letter-spacing: -0.014em;
+  --text-lead: 1.125rem;
+  --text-lead--line-height: 1.6;
+
+  --radius-card: 1.25rem;
+  --radius-panel: 1.75rem;
+  --radius-pill: 9999px;
+
+  --shadow-soft: 0 1px 2px rgb(20 26 34 / 0.04), 0 8px 24px -12px rgb(20 26 34 / 0.12);
+  --shadow-raised: 0 2px 4px rgb(20 26 34 / 0.04), 0 18px 48px -20px rgb(20 26 34 / 0.24);
+  --shadow-float: 0 30px 70px -32px rgb(29 36 57 / 0.45);
+
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-spring: cubic-bezier(0.34, 1.32, 0.64, 1);
+  --duration-micro: 140ms;
+  --duration-ui: 260ms;
+  --duration-slow: 620ms;
+
+  --header-h: 4.5rem;
+}
+
+:root {
+  --focus: var(--color-indigo-600);
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-indigo-200);
+    color: var(--color-indigo-900);
+  }
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+  }
+  /* Tabular figures everywhere a shilling amount can change. */
+  [data-figure] {
+    font-variant-numeric: tabular-nums;
+  }
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@utility container-site {
+  width: 100%;
+  margin-inline: auto;
+  max-width: 78rem;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) { padding-inline: 2.5rem; }
+  @media (width >= 80rem) { padding-inline: 3.5rem; }
+}
+
+@utility section-y {
+  padding-block: clamp(4rem, 2.5rem + 6vw, 8rem);
+}
+
+/* A soft field of colour behind a section. Pure decoration, never announced. */
+@utility blob {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(var(--blob-blur, 60px));
+  opacity: var(--blob-opacity, 0.5);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Underline that draws itself in on hover, used on quiet text links. */
+@utility link-underline {
+  background-image: linear-gradient(currentColor, currentColor);
+  background-size: 0% 1px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size var(--duration-ui) var(--ease-out-quart);
+  &:hover, &:focus-visible { background-size: 100% 1px; }
+}
+
+/* Cards lift by a hair. Anything more reads as a toy. */
+@utility lift {
+  transition: transform var(--duration-ui) var(--ease-out-quart), box-shadow var(--duration-ui) var(--ease-out-quart), border-color var(--duration-ui) var(--ease-out-quart);
+  &:hover { transform: translateY(-2px); box-shadow: var(--shadow-raised); }
+}
+
+@keyframes blob-drift {
+  0%, 100% { transform: translate3d(0, 0, 0) scale(1); }
+  33% { transform: translate3d(3%, -4%, 0) scale(1.06); }
+  66% { transform: translate3d(-3%, 3%, 0) scale(0.97); }
+}
+
+@keyframes sheen {
+  from { transform: translateX(-120%); }
+  to { transform: translateX(220%); }
+}
+
+@keyframes fade-slide {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.45; transform: scale(0.82); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Lenis */
+html.lenis, html.lenis body { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }
+.lenis.lenis-stopped { overflow: hidden; }
