@@ -362,6 +362,9 @@ function LabelTracker({
 }
 
 export default function HeroScene({ reduced = false, dark = false }: { reduced?: boolean; dark?: boolean }) {
+  // On a touch screen the canvas must not swallow the swipe, or the page cannot be
+  // scrolled past the hero. Dragging to look around stays a pointer-device feature.
+  const coarse = typeof window !== "undefined" && window.matchMedia("(pointer: coarse)").matches;
   const groupRef = useRef<THREE.Group>(null);
   const nodes = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -372,6 +375,7 @@ export default function HeroScene({ reduced = false, dark = false }: { reduced?:
       dpr={[1, 1.75]}
       camera={{ position: [7.4, 4.9, 8.4], fov: 32 }}
       gl={{ antialias: true, alpha: true }}
+      style={{ touchAction: "pan-y" }}
       aria-label={hero.sceneLabel}
       role="img"
       frameloop={reduced ? "demand" : "always"}
@@ -393,6 +397,7 @@ export default function HeroScene({ reduced = false, dark = false }: { reduced?:
       <ContactShadows position={[0, 0, 0]} opacity={dark ? 0.5 : 0.3} scale={16} blur={2.8} far={6} />
       <OrbitControls
         target={[0, 0.45, 0]}
+        enableRotate={!coarse}
         enableZoom={false}
         enablePan={false}
         minPolarAngle={Math.PI / 5}

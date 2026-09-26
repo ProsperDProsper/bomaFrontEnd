@@ -14,7 +14,7 @@ export function Cta() {
   const [touched, setTouched] = useState(false);
 
   return (
-    <section id="start" className="relative overflow-hidden bg-brand-900 text-white section-y dark:bg-brand-950">
+    <section id="start" className="relative overflow-hidden text-white section-y">
       <Blob tone="deep" organic className="-left-36 -top-24 size-[36rem]" opacity={0.5} darkOpacity={0.16} blur={95} />
       <Blob tone="violet" organic className="-bottom-44 right-0 size-[32rem]" opacity={0.3} darkOpacity={0.12} blur={95} delay={-7} />
       <Blob tone="sky" className="left-1/2 top-1/2 size-[24rem]" opacity={0.18} darkOpacity={0.08} blur={95} delay={-13} />

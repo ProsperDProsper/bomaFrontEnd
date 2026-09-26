@@ -5,7 +5,8 @@ import { Product } from "@/components/sections/Product";
 import { Reports } from "@/components/sections/Reports";
 import { Faq, faqJsonLd } from "@/components/sections/Faq";
 import { Cta } from "@/components/sections/Cta";
-import { PageBackground, BandFade } from "@/components/ui/PageBackground";
+import { Footer } from "@/components/layout/Footer";
+import { PageBackground, ClosingBand } from "@/components/ui/PageBackground";
 
 export default function Home() {
   return (
@@ -23,9 +24,11 @@ export default function Home() {
         </div>
       </div>
 
-      {/* …then it dissolves into the closing band, which the footer continues. */}
-      <BandFade />
-      <Cta />
+      {/* …then the closing band, which the footer shares. */}
+      <ClosingBand>
+        <Cta />
+        <Footer />
+      </ClosingBand>
 
       <script
         type="application/ld+json"

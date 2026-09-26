@@ -126,12 +126,12 @@ export function Hero() {
             aria-hidden
             className="pointer-events-none absolute inset-x-6 top-10 -z-10 h-2/3 rounded-full bg-brand-200/40 blur-3xl dark:bg-brand-500/12"
           />
-          <div className="relative aspect-4/3 w-full sm:aspect-square lg:-mr-10 lg:aspect-4/3 xl:-mr-20">
+          <div className="relative aspect-4/3 w-full [&_canvas]:touch-pan-y [&>div]:touch-pan-y sm:aspect-square lg:-mr-10 lg:aspect-4/3 xl:-mr-20">
             <HeroScene reduced={reduced} dark={dark} />
           </div>
           <p
             data-hero-foot
-            className="pointer-events-none mt-1 flex items-center justify-center gap-2 text-xs text-ink-faint lg:justify-end"
+            className="pointer-events-none mt-1 hidden items-center justify-center gap-2 text-xs text-ink-faint [@media(pointer:fine)]:flex lg:justify-end"
           >
             <HandTap size={14} aria-hidden />
             {hero.sceneHint}

@@ -33,14 +33,19 @@ export function PageBackground() {
 }
 
 /**
- * The soft hand-off into the dark closing band: the paper colour fades out over a
- * tall strip so the two backgrounds meet in a blur instead of a line.
+ * The closing band. The call to action and the footer sit inside one element, so
+ * nothing can show a seam between them.
  */
-export function BandFade({ className }: { className?: string }) {
+export function ClosingBand({ children }: { children: React.ReactNode }) {
   return (
-    <div
-      aria-hidden
-      className={`pointer-events-none h-40 w-full bg-linear-to-b from-paper via-paper/60 to-brand-900 dark:to-brand-950 ${className ?? ""}`}
-    />
+    <div className="relative bg-brand-900 dark:bg-brand-950">
+      {/* A wide, soft glow just inside the top edge: the band arrives without a
+          grey veil over it and without a hard rule across the page. */}
+      <span
+        aria-hidden
+        className="pointer-events-none absolute inset-x-0 -top-px h-56 bg-[radial-gradient(120%_100%_at_50%_0%,rgb(74_110_229/0.55),transparent_70%)]"
+      />
+      <div className="relative">{children}</div>
+    </div>
   );
 }

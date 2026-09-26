@@ -13,7 +13,7 @@ import { cn } from "@/lib/utils";
  * transparent across the band where headings and body copy sit.
  */
 const EDGE_MASK =
-  "radial-gradient(ellipse 78% 62% at 50% 50%, transparent 38%, rgba(0,0,0,0.55) 72%, black 100%)";
+  "radial-gradient(ellipse 70% 55% at 50% 50%, rgba(0,0,0,0.25) 30%, rgba(0,0,0,0.7) 62%, black 88%)";
 
 export function GridLines({
   className,
@@ -58,7 +58,7 @@ export function GridLines({
     <div ref={ref} aria-hidden className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}>
       {/* Base grid: strongest at the edges, almost gone where the copy sits. */}
       <div
-        className="absolute inset-0 opacity-40"
+        className="absolute inset-0 opacity-90 dark:opacity-60"
         style={{
           backgroundImage:
             "linear-gradient(to right, var(--color-line) 1px, transparent 1px), linear-gradient(to bottom, var(--color-line) 1px, transparent 1px)",
@@ -72,7 +72,7 @@ export function GridLines({
       <div
         className="absolute inset-0 transition-opacity duration-500 ease-(--ease-out-quart)"
         style={{
-          opacity: "calc(var(--glow, 0) * 0.5)",
+          opacity: "calc(var(--glow, 0) * 0.75)",
           backgroundImage:
             "linear-gradient(to right, var(--color-brand-400) 1px, transparent 1px), linear-gradient(to bottom, var(--color-brand-400) 1px, transparent 1px)",
           backgroundSize: `${size}px ${size}px`,
