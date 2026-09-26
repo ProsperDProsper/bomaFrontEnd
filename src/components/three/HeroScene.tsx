@@ -272,27 +272,30 @@ function Compound() {
 }
 
 /** The plot itself: a soft slab with a road looping through it. */
-function Ground() {
+function Ground({ dark }: { dark: boolean }) {
+  const top = dark ? "#16203a" : C.ground;
+  const edge = dark ? "#101831" : C.groundEdge;
+  const road = dark ? "#1d284a" : C.road;
   return (
     <group>
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, -0.02, 0]} receiveShadow>
         <circleGeometry args={[4.75, 64]} />
-        <meshStandardMaterial color={C.ground} roughness={1} />
+        <meshStandardMaterial color={top} roughness={1} />
       </mesh>
       <mesh position={[0, -0.12, 0]} receiveShadow>
         <cylinderGeometry args={[4.75, 4.62, 0.22, 64]} />
-        <meshStandardMaterial color={C.groundEdge} roughness={1} />
+        <meshStandardMaterial color={edge} roughness={1} />
       </mesh>
       <mesh rotation={[-Math.PI / 2, 0, 0]} position={[0, 0.01, 1.2]} receiveShadow>
         <ringGeometry args={[2.9, 3.5, 64]} />
-        <meshStandardMaterial color={C.road} roughness={1} />
+        <meshStandardMaterial color={road} roughness={1} />
       </mesh>
     </group>
   );
 }
 
 /** Slow drift plus a touch of pointer parallax; both stop for reduced motion. */
-function Rig({ reduced, groupRef }: { reduced: boolean; groupRef: React.RefObject<THREE.Group | null> }) {
+function Rig({ reduced, groupRef, dark }: { reduced: boolean; groupRef: React.RefObject<THREE.Group | null>; dark: boolean }) {
   useFrame(({ clock, pointer }) => {
     const g = groupRef.current;
     if (!g || reduced) return;
@@ -303,7 +306,7 @@ function Rig({ reduced, groupRef }: { reduced: boolean; groupRef: React.RefObjec
   });
   return (
     <group ref={groupRef} scale={0.92} position={[0, -0.8, 0]}>
-      <Ground />
+      <Ground dark={dark} />
       <Compound />
       <ApartmentBlock position={[-2.15, 0, -1.5]} rotation={[0, 0.26, 0]} />
       <Lodge position={[2.55, 0, 1.75]} rotation={[0, -0.55, 0]} />
@@ -358,7 +361,7 @@ function LabelTracker({
   return null;
 }
 
-export default function HeroScene({ reduced = false }: { reduced?: boolean }) {
+export default function HeroScene({ reduced = false, dark = false }: { reduced?: boolean; dark?: boolean }) {
   const groupRef = useRef<THREE.Group>(null);
   const nodes = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -373,11 +376,11 @@ export default function HeroScene({ reduced = false }: { reduced?: boolean }) {
       role="img"
       frameloop={reduced ? "demand" : "always"}
     >
-      <hemisphereLight args={["#ffffff", "#c3cee4", 1.25]} />
+      <hemisphereLight args={dark ? ["#dbe6ff", "#101a33", 0.85] : ["#ffffff", "#c3cee4", 1.25]} />
       <directionalLight
         position={[6, 9, 4]}
-        intensity={1.75}
-        color="#fff6ea"
+        intensity={dark ? 1.35 : 1.75}
+        color={dark ? "#dce6ff" : "#fff6ea"}
         castShadow
         shadow-mapSize={[1024, 1024]}
         shadow-camera-left={-10}
@@ -385,9 +388,9 @@ export default function HeroScene({ reduced = false }: { reduced?: boolean }) {
         shadow-camera-top={10}
         shadow-camera-bottom={-10}
       />
-      <Rig reduced={reduced} groupRef={groupRef} />
+      <Rig reduced={reduced} groupRef={groupRef} dark={dark} />
       <LabelTracker groupRef={groupRef} nodes={nodes} />
-      <ContactShadows position={[0, 0, 0]} opacity={0.3} scale={16} blur={2.8} far={6} />
+      <ContactShadows position={[0, 0, 0]} opacity={dark ? 0.5 : 0.3} scale={16} blur={2.8} far={6} />
       <OrbitControls
         target={[0, 0.45, 0]}
         enableZoom={false}

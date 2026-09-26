@@ -14,6 +14,19 @@ import { Blob, Ring } from "@/components/ui/Blob";
 // WebGL only on the client, and only once the rest of the page is interactive.
 const HeroScene = dynamic(() => import("@/components/three/HeroScene"), { ssr: false });
 
+/** Follows the theme attribute the toggle writes on <html>. */
+function useIsDark() {
+  return useSyncExternalStore(
+    (onChange) => {
+      const observer = new MutationObserver(onChange);
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+      return () => observer.disconnect();
+    },
+    () => document.documentElement.dataset.theme === "dark",
+    () => false,
+  );
+}
+
 /** Reads the media query without an effect, so the server render stays "no preference". */
 const motionQuery = () => window.matchMedia("(prefers-reduced-motion: reduce)");
 function usePrefersReducedMotion() {
@@ -31,6 +44,7 @@ function usePrefersReducedMotion() {
 export function Hero() {
   const scope = useRef<HTMLElement>(null);
   const reduced = usePrefersReducedMotion();
+  const dark = useIsDark();
 
   useGSAP(
     () => {
@@ -120,7 +134,7 @@ export function Hero() {
             className="pointer-events-none absolute inset-x-6 top-10 -z-10 h-2/3 rounded-full bg-brand-200/40 blur-3xl"
           />
           <div className="relative aspect-4/3 w-full sm:aspect-square lg:-mr-10 lg:aspect-4/3 xl:-mr-20">
-            <HeroScene reduced={reduced} />
+            <HeroScene reduced={reduced} dark={dark} />
           </div>
           <p
             data-hero-foot

@@ -35,11 +35,19 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${bricolage.variable} ${jakarta.variable} antialiased`}>
+    <html lang="en" className={`${bricolage.variable} ${jakarta.variable} antialiased`} suppressHydrationWarning>
+      <head>
+        <script
+          // Applies the saved theme (or the system one) before the first paint.
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem("boma-theme");if(!t){t=matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"}document.documentElement.dataset.theme=t}catch(e){}})()`,
+          }}
+        />
+      </head>
       <body className="flex min-h-screen flex-col">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-pill focus:bg-brand-700 focus:px-5 focus:py-3 focus:text-white"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-pill focus:bg-(--color-btn) focus:px-5 focus:py-3 focus:text-white"
         >
           {site.microcopy.skipToContent}
         </a>

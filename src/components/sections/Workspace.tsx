@@ -12,6 +12,7 @@ import { Reveal } from "@/components/motion/Reveal";
 import { Blob } from "@/components/ui/Blob";
 import { Orbit } from "@/components/ui/Orbit";
 import { GridLines } from "@/components/ui/GridLines";
+import { FrameLines } from "@/components/ui/FrameLines";
 import { Tag } from "@/components/ui/Tag";
 import { Screen } from "@/components/ui/Screen";
 
@@ -24,6 +25,7 @@ export function Workspace() {
   return (
     <section id="overview" className="relative overflow-hidden section-y">
       <GridLines size={80} radius={360} />
+      <FrameLines />
       <Blob tone="brand" organic className="-right-44 top-10 size-[36rem]" opacity={0.26} blur={80} />
       <Blob tone="sky" organic className="-left-36 top-1/2 size-[30rem]" opacity={0.24} delay={-8} />
       <Blob tone="pale" className="left-1/3 -top-10 size-[24rem]" opacity={0.55} delay={-3} />
@@ -54,7 +56,7 @@ export function Workspace() {
                 onClick={() => setActive(i)}
                 className={cn(
                   "rounded-pill px-4 py-2 text-sm font-semibold transition-colors duration-(--duration-ui)",
-                  i === active ? "bg-brand-700 text-white" : "text-ink-muted hover:text-brand-700",
+                  i === active ? "bg-(--color-btn) text-white" : "text-ink-muted hover:text-brand-700",
                 )}
               >
                 {t.label}

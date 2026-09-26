@@ -24,7 +24,7 @@ export function StaysScreen() {
       title={stays.property}
       subtitle={site.microcopy.illustrative}
       action={
-        <span className="inline-flex items-center gap-1.5 rounded-pill bg-brand-700 px-3 py-1.5 text-[0.72rem] font-semibold text-white">
+        <span className="inline-flex items-center gap-1.5 rounded-pill bg-(--color-btn) px-3 py-1.5 text-[0.72rem] font-semibold text-white">
           <Plus size={12} weight="bold" aria-hidden />
           {stays.action}
         </span>
@@ -85,7 +85,7 @@ export function StaysScreen() {
                   className={cn(
                     "flex-1 rounded-lg border py-2 text-center text-[0.7rem] transition-colors duration-(--duration-ui)",
                     booked
-                      ? "border-brand-600 bg-brand-600 font-semibold text-white"
+                      ? "border-(--color-btn) bg-(--color-btn) font-semibold text-white"
                       : "border-line bg-surface text-ink-faint",
                   )}
                 >

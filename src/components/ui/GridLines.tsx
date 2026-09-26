@@ -8,6 +8,13 @@ import { cn } from "@/lib/utils";
  * are a repeating gradient; the glow is a mask that follows the cursor, so nothing
  * re-renders — the handler only writes two CSS variables.
  */
+/**
+ * Keeps the lines out of the middle of the section: solid near the four edges,
+ * transparent across the band where headings and body copy sit.
+ */
+const EDGE_MASK =
+  "radial-gradient(ellipse 78% 62% at 50% 50%, transparent 38%, rgba(0,0,0,0.55) 72%, black 100%)";
+
 export function GridLines({
   className,
   size = 64,
@@ -49,26 +56,30 @@ export function GridLines({
 
   return (
     <div ref={ref} aria-hidden className={cn("pointer-events-none absolute inset-0 overflow-hidden", className)}>
-      {/* Base grid: barely there. */}
+      {/* Base grid: strongest at the edges, almost gone where the copy sits. */}
       <div
-        className="absolute inset-0 opacity-[0.55]"
+        className="absolute inset-0 opacity-40"
         style={{
           backgroundImage:
             "linear-gradient(to right, var(--color-line) 1px, transparent 1px), linear-gradient(to bottom, var(--color-line) 1px, transparent 1px)",
           backgroundSize: `${size}px ${size}px`,
-          maskImage: "radial-gradient(120% 90% at 50% 0%, black 30%, transparent 78%)",
+          maskImage: EDGE_MASK,
+          WebkitMaskImage: EDGE_MASK,
         }}
       />
-      {/* The same grid in brand blue, revealed only around the pointer. */}
+      {/* The same grid in brand blue, revealed only around the pointer — and still
+          held back over the middle of the section, where the text lives. */}
       <div
         className="absolute inset-0 transition-opacity duration-500 ease-(--ease-out-quart)"
         style={{
-          opacity: "var(--glow, 0)",
+          opacity: "calc(var(--glow, 0) * 0.5)",
           backgroundImage:
             "linear-gradient(to right, var(--color-brand-400) 1px, transparent 1px), linear-gradient(to bottom, var(--color-brand-400) 1px, transparent 1px)",
           backgroundSize: `${size}px ${size}px`,
-          maskImage: `radial-gradient(${radius}px ${radius}px at var(--mx, 50%) var(--my, 50%), black, transparent 70%)`,
-          WebkitMaskImage: `radial-gradient(${radius}px ${radius}px at var(--mx, 50%) var(--my, 50%), black, transparent 70%)`,
+          maskImage: `radial-gradient(${radius}px ${radius}px at var(--mx, 50%) var(--my, 50%), black, transparent 70%), ${EDGE_MASK}`,
+          WebkitMaskImage: `radial-gradient(${radius}px ${radius}px at var(--mx, 50%) var(--my, 50%), black, transparent 70%), ${EDGE_MASK}`,
+          maskComposite: "intersect",
+          WebkitMaskComposite: "source-in",
         }}
       />
     </div>

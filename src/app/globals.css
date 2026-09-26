@@ -49,6 +49,10 @@
   --color-moss-500: #2f8f66;
   --color-moss-600: #257053;
 
+  /* Button fills stay dark-on-light and light-on-dark whatever the theme does. */
+  --color-btn: #2747b0;
+  --color-btn-hover: #223c8b;
+
   --font-display: var(--font-bricolage), Georgia, serif;
   --font-sans: var(--font-jakarta), ui-sans-serif, system-ui, sans-serif;
   --font-mono: ui-monospace, "SF Mono", monospace;
@@ -89,6 +93,50 @@
 
 :root {
   --focus: var(--color-brand-600);
+  color-scheme: light;
+}
+
+/* Tailwind's dark: variant follows the attribute the toggle writes on <html>. */
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+/**
+ * Dark theme. Only the neutrals and the pale end of the brand scale move; the deep
+ * brand shades stay deep, so the dark bands keep working and nothing inverts twice.
+ */
+[data-theme="dark"] {
+  color-scheme: dark;
+
+  --color-paper: #0a1020;
+  --color-paper-warm: #0d1426;
+  --color-surface: #121b31;
+  --color-surface-sunk: #0d1526;
+
+  --color-ink: #e8eefb;
+  --color-ink-soft: #c2cee6;
+  --color-ink-muted: #94a3c0;
+  --color-ink-faint: #6c7b9b;
+  --color-line: #222d49;
+  --color-line-soft: #1a2439;
+
+  /* Pale brand tints become dark tints. */
+  --color-brand-50: #141d36;
+  --color-brand-100: #18233f;
+  --color-brand-200: #24324f;
+  /* Mid brand shades lighten so accent text stays legible on a dark surface. */
+  --color-brand-600: #8ba4f2;
+  --color-brand-700: #a7b9f7;
+
+  --color-btn: #315bd8;
+  --color-btn-hover: #4a6ee5;
+
+  --color-clay-50: #2a1a12;
+  --color-clay-600: #e0a077;
+  --color-moss-50: #12251d;
+  --color-moss-600: #6fc39c;
+
+  --shadow-soft: 0 1px 2px rgb(0 0 0 / 0.4), 0 8px 24px -12px rgb(0 0 0 / 0.55);
+  --shadow-raised: 0 2px 4px rgb(0 0 0 / 0.45), 0 18px 48px -20px rgb(0 0 0 / 0.7);
+  --shadow-float: 0 30px 70px -32px rgb(0 0 0 / 0.8);
 }
 
 @layer base {

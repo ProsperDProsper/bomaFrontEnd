@@ -1,12 +1,15 @@
-import { Buildings, UsersThree, DeviceMobile, ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { audience } from "@/content/copy";
 import { Reveal } from "@/components/motion/Reveal";
 import { Typewriter } from "@/components/motion/Typewriter";
 import { Blob } from "@/components/ui/Blob";
 import { Orbit } from "@/components/ui/Orbit";
 import { GridLines } from "@/components/ui/GridLines";
+import { FrameLines } from "@/components/ui/FrameLines";
+import { LinkCard } from "@/components/ui/LinkCard";
+import { audienceArt } from "@/components/ui/Illustrations";
 
-const icons = [Buildings, UsersThree, DeviceMobile];
+/** Where each card sends you: the workspace, the records, and getting started. */
+const audienceLinks = ["#overview", "#product", "#start"];
 
 /**
  * Bento: one tall card carries the heading, the three audiences sit around it in
@@ -14,8 +17,9 @@ const icons = [Buildings, UsersThree, DeviceMobile];
  */
 export function Audience() {
   return (
-    <section aria-labelledby="audience-heading" className="relative overflow-hidden bg-surface section-y">
+    <section aria-labelledby="audience-heading" className="relative overflow-hidden section-y">
       <GridLines size={72} radius={340} />
+      <FrameLines />
       <Blob tone="brand" organic className="-left-32 top-0 size-[28rem]" opacity={0.18} />
       <Blob tone="violet" organic className="-right-28 bottom-0 size-[26rem]" opacity={0.18} delay={-8} />
       <Orbit className="-right-24 top-10 size-[22rem]" seconds={70} bead />
@@ -44,38 +48,18 @@ export function Audience() {
             </div>
           </div>
 
-          {/* The three audiences: first one wide, the other two side by side. */}
+          {/* The three audiences, as clickable cards with their own small product pictures. */}
           {audience.items.map((item, i) => {
-            const Icon = icons[i];
-            const wide = i === 0;
+            const Art = audienceArt[i];
             return (
-              <article
+              <LinkCard
                 key={item.title}
-                className={[
-                  "group relative overflow-hidden rounded-panel border border-line bg-surface p-7 lift",
-                  wide ? "lg:col-span-2" : "",
-                ].join(" ")}
-              >
-                <span
-                  aria-hidden
-                  className="absolute -right-10 -top-10 size-28 rounded-full bg-brand-100/70 transition-transform duration-(--duration-slow) ease-(--ease-out-quart) group-hover:scale-125"
-                />
-                <div className="relative flex items-start justify-between gap-6">
-                  <div className="max-w-md">
-                    <span className="inline-flex size-11 items-center justify-center rounded-full bg-brand-600/10 text-brand-700 ring-1 ring-brand-200 transition-colors duration-(--duration-ui) group-hover:bg-brand-600 group-hover:text-white">
-                      <Icon size={20} weight="duotone" aria-hidden />
-                    </span>
-                    <h3 className="mt-5 font-display text-h3 text-ink">{item.title}</h3>
-                    <p className="mt-2 text-[0.92rem] text-ink-muted text-pretty">{item.body}</p>
-                  </div>
-                  <ArrowUpRight
-                    size={18}
-                    weight="bold"
-                    aria-hidden
-                    className="shrink-0 text-ink-faint opacity-0 transition-all duration-(--duration-ui) group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-brand-600 group-hover:opacity-100"
-                  />
-                </div>
-              </article>
+                href={audienceLinks[i]}
+                title={item.title}
+                body={item.body}
+                illustration={<Art />}
+                className={i === 0 ? "lg:col-span-2" : ""}
+              />
             );
           })}
         </Reveal>

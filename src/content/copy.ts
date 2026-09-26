@@ -60,6 +60,7 @@ export const product = {
   heading: "From collecting rent to seeing a building pay for itself.",
   lead: "Four kinds of record, kept against the properties they belong to.",
   hint: "Choose a unit to see its record",
+  screenCta: "See this with your own properties",
   sections: [
     {
       id: "rentals",

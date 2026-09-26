@@ -6,6 +6,7 @@ import { List, X, WhatsappLogo } from "@phosphor-icons/react";
 import { site } from "@/content/site";
 import { cn } from "@/lib/utils";
 import { ButtonLink } from "@/components/ui/Button";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Header() {
   const { nav, brand, contact } = site;
@@ -61,6 +62,7 @@ export function Header() {
             >
               {nav.signIn.label}
             </a>
+            <ThemeToggle className="inline-flex size-10 items-center justify-center rounded-pill border border-line bg-surface/70 text-ink-soft transition-colors hover:border-brand-300 hover:text-brand-700" />
             <ButtonLink
               href={contact.whatsappHref}
               external

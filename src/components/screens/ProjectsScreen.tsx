@@ -20,7 +20,7 @@ export function ProjectsScreen() {
       title={projects.screenTitle}
       subtitle={site.microcopy.illustrative}
       action={
-        <span className="inline-flex items-center gap-1.5 rounded-pill bg-brand-700 px-3 py-1.5 text-[0.72rem] font-semibold text-white">
+        <span className="inline-flex items-center gap-1.5 rounded-pill bg-(--color-btn) px-3 py-1.5 text-[0.72rem] font-semibold text-white">
           <Plus size={12} weight="bold" aria-hidden />
           {projects.action}
         </span>

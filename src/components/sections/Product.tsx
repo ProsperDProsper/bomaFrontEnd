@@ -1,9 +1,11 @@
+import { ArrowUpRight } from "@phosphor-icons/react/dist/ssr";
 import { product } from "@/content/copy";
 import { cn } from "@/lib/utils";
 import { Reveal } from "@/components/motion/Reveal";
 import { Blob } from "@/components/ui/Blob";
 import { Orbit } from "@/components/ui/Orbit";
 import { GridLines } from "@/components/ui/GridLines";
+import { FrameLines } from "@/components/ui/FrameLines";
 import { RentalsScreen } from "@/components/screens/RentalsScreen";
 import { StaysScreen } from "@/components/screens/StaysScreen";
 import { ProjectsScreen } from "@/components/screens/ProjectsScreen";
@@ -17,8 +19,9 @@ const screens = {
 /** The three record types, each beside the screen you would actually use. */
 export function Product() {
   return (
-    <section id="product" className="relative overflow-hidden bg-paper-warm section-y">
+    <section id="product" className="relative overflow-hidden section-y">
       <GridLines size={88} radius={380} />
+      <FrameLines />
       <Blob tone="brand" organic className="-left-44 top-[12%] size-[34rem]" opacity={0.24} blur={80} />
       <Blob tone="violet" organic className="-right-40 top-[42%] size-[32rem]" opacity={0.22} delay={-6} />
       <Blob tone="moss" organic className="-left-32 bottom-[8%] size-[28rem]" opacity={0.16} delay={-12} />
@@ -59,18 +62,42 @@ export function Product() {
                     ))}
                   </h3>
                   <p className="mt-5 text-ink-muted text-pretty">{s.body}</p>
-                  <ul className="mt-8 grid gap-x-8 gap-y-5 sm:grid-cols-2">
+                  {/* Every feature is a card you can click through to getting started. */}
+                  <ul className="mt-8 grid gap-2.5 sm:grid-cols-2">
                     {s.features.map((f) => (
-                      <li key={f.title} className="border-t border-line-soft pt-3">
-                        <p className="text-[0.95rem] font-semibold text-ink">{f.title}</p>
-                        <p className="mt-1 text-[0.88rem] text-ink-muted text-pretty">{f.body}</p>
+                      <li key={f.title} className="contents">
+                        <a
+                          href="#start"
+                          className="group/f rounded-card border border-line bg-surface/70 p-4 transition-[transform,border-color,background-color] duration-(--duration-ui) ease-(--ease-out-quart) hover:-translate-y-0.5 hover:border-brand-300 hover:bg-surface"
+                        >
+                          <span className="flex items-start justify-between gap-3">
+                            <span className="text-[0.95rem] font-semibold text-ink">{f.title}</span>
+                            <ArrowUpRight
+                              size={14}
+                              weight="bold"
+                              aria-hidden
+                              className="mt-0.5 shrink-0 text-ink-faint opacity-0 transition-all duration-(--duration-ui) group-hover/f:-translate-y-0.5 group-hover/f:translate-x-0.5 group-hover/f:text-brand-600 group-hover/f:opacity-100"
+                            />
+                          </span>
+                          <span className="mt-1 block text-[0.86rem] text-ink-muted text-pretty">{f.body}</span>
+                        </a>
                       </li>
                     ))}
                   </ul>
                 </Reveal>
 
                 <Reveal y={26} stagger={0} className="min-w-0">
-                  <ScreenBody />
+                  <div className="group/screen">
+                    <ScreenBody />
+                    {/* The screen itself stays interactive, so the link sits under it. */}
+                    <a
+                      href="#start"
+                      className="mt-3 inline-flex items-center gap-1.5 rounded-pill px-1 text-[0.85rem] font-semibold text-brand-700 transition-colors hover:text-brand-800"
+                    >
+                      {product.screenCta}
+                      <ArrowUpRight size={14} weight="bold" aria-hidden className="transition-transform duration-(--duration-ui) group-hover/screen:-translate-y-0.5 group-hover/screen:translate-x-0.5" />
+                    </a>
+                  </div>
                 </Reveal>
               </div>
             );

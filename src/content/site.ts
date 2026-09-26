@@ -21,6 +21,8 @@ export const site = {
     ],
     cta: { label: "Ask for a demo" },
     signIn: { label: "Sign in" },
+    themeDark: "Switch to dark mode",
+    themeLight: "Switch to light mode",
     menuOpen: "Open menu",
     menuClose: "Close menu",
   },
